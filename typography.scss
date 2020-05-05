@@ -1,0 +1,26 @@
+@mixin line-height-crop($line-height: 1, $capital-letter: 1) {
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((#{$capital-letter} - #{$line-height}) * 0.5em);
+  }
+}
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin scale($unit: 1rem, $ratio: 1.2) {
+  --text-xs: calc((#{$unit} / #{$ratio}) / #{$ratio});
+  --text-sm: calc(var(--text-xs) * #{$ratio});
+  --text-md: calc(var(--text-sm) * #{$ratio} * #{$ratio});
+  --text-lg: calc(var(--text-md) * #{$ratio});
+  --text-xl: calc(var(--text-lg) * #{$ratio});
+  --text-xxl: calc(var(--text-xl) * #{$ratio});
+  --text-xxxl: calc(var(--text-xxl) * #{$ratio});
+  --text-xxxxl: calc(var(--text-xxxl) * #{$ratio});
+  font-size: $unit;
+}

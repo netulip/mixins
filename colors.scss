@@ -1,0 +1,53 @@
+@use 'sass:string';
+@use 'sass:color';
+
+@mixin define($name, $color) {
+  $hue: color.hue($color);
+  $saturation: color.saturation($color);
+  $lightness: color.lightness($color);
+  $alpha: color.lightness($color);
+
+  #{$name}-h: #{$hue};
+  #{$name}-s: #{$saturation};
+  #{$name}-l: #{$lightness};
+  #{$name}-a: #{$alpha};
+
+  #{$name}: string.unquote(
+    'hsla(var(#{$name}-h), var(#{$name}-s), var(#{$name}-l), var(#{$name}-a))'
+  );
+}
+
+@mixin hue($name, $hue: 30%) {
+  #{$name}-a: #{$hue};
+}
+
+@mixin saturation($name, $saturation: 1) {
+  #{$name}-a: #{$saturation};
+}
+
+@mixin lightness($name, $lightness: 1) {
+  #{$name}-a: #{$lightness};
+}
+
+@mixin alpha($name, $alpha: 1) {
+  #{$name}-a: #{$alpha};
+}
+
+
+[data-color-mode='dark'] {
+    background-color: var(--color-bg, hsl(0, 0%, 100%));
+    color: var(--color-contrast-high, hsl(240, 4%, 20%));
+  }
+  
+  body {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  
+    background: #f5f8fa;
+    color: #333;
+  
+    [data-color-mode='dark'] & {
+      background: #30404d;
+      color: rgb(245, 248, 250);
+    }
+  }
