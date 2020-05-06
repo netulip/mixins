@@ -40,3 +40,7 @@
   }
   @return $value / $root * 1rem;
 }
+
+@function border-shadow($size: 1px, $color: black) {
+  @return 0 0 0 $size $color;
+}
