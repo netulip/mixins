@@ -1,14 +1,16 @@
 @use 'sass:math';
 @use 'sass:meta';
 
-@mixin reset {
-  background-color: transparent;
+@mixin clear {
   padding: 0;
   border: 0;
-  border-radius: 0;
-  color: inherit;
-  line-height: inherit;
   appearance: none;
+  line-height: inherit;
+  color: inherit;
+  outline: none;
+  border-radius: 0;
+  background-color: transparent;
+  margin: 0;
 }
 
 @mixin triangle($direction: up, $width: 12px, $color: red) {
