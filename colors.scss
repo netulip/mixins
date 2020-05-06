@@ -33,10 +33,10 @@
   #{$name}-a: #{$alpha};
 }
 
-@function hsla($color: black, $alpha: 1) {
-  @return string.unquote(
-    "hsla(#{color.hue($color)}, #{color.saturation($color)}, #{color.lightness($color)}, #{$alpha})"
-  );
-}
+// @function hsla($color: black, $alpha: 1) {
+//   @return string.unquote(
+//     "hsla(#{color.hue($color)}, #{color.saturation($color)}, #{color.lightness($color)}, #{$alpha})"
+//   );
+// }
 
-@debug color.hue(hsla(rgba(23, 324, 20, 0.4), .5));
+// @debug color.hue(hsla(rgba(23, 324, 20, 0.4), .5));
