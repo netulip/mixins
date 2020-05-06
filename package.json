@@ -1,0 +1,23 @@
+{
+  "name": "@netulip/mixins",
+  "version": "0.0.1",
+  "description": "A collection for Sass mixins.",
+  "main": "index.scss",
+  "scripts": {},
+  "author": "Mohamed Meftah <http://mohamed-ted.me>",
+  "homepage": "https://github.com/netulip/mixins#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netulip/mixins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/netulip/mixins/issues"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "mixins",
+    "helpers"
+  ],
+  "license": "MIT"
+}
