@@ -30,7 +30,7 @@
 }
 
 @function strip-unit($number) {
-  @if meta.type-of($number) == 'number' and not math($number) {
+  @if meta.type-of($number) == 'number' {
     @return $number / ($number * 0 + 1);
   }
   @return $number;
