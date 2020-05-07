@@ -1,42 +1,17 @@
 @use 'sass:string';
 @use 'sass:color';
 
-@mixin define($name, $color) {
-  $hue: color.hue($color);
-  $saturation: color.saturation($color);
-  $lightness: color.lightness($color);
-  $alpha: color.lightness($color);
+@import 'utils';
 
-  #{$name}-h: #{$hue};
-  #{$name}-s: #{$saturation};
-  #{$name}-l: #{$lightness};
-  #{$name}-a: #{$alpha};
-
-  #{$name}: string.unquote(
-    "hsla(var(#{$name}-h), var(#{$name}-s), var(#{$name}-l), var(#{$name}-a))"
-  );
+@function components($color) {
+  @return strip-unit(color.hue($color)), color.saturation($color), color.lightness($color);
 }
 
-@mixin hue($name, $hue: 30%) {
-  #{$name}-a: #{$hue};
+@function var($name, $alpha: 1) {
+  @return string.unquote('hsla(var(#{$name}), #{$alpha})');
 }
 
-@mixin saturation($name, $saturation: 1) {
-  #{$name}-a: #{$saturation};
+body {
+  --color-background: #{components(green)};
+  background: var(--color-background);
 }
-
-@mixin lightness($name, $lightness: 1) {
-  #{$name}-a: #{$lightness};
-}
-
-@mixin alpha($name, $alpha: 1) {
-  #{$name}-a: #{$alpha};
-}
-
-// @function hsla($color: black, $alpha: 1) {
-//   @return string.unquote(
-//     "hsla(#{color.hue($color)}, #{color.saturation($color)}, #{color.lightness($color)}, #{$alpha})"
-//   );
-// }
-
-// @debug color.hue(hsla(rgba(23, 324, 20, 0.4), .5));
