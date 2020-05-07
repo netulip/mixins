@@ -1,12 +1,13 @@
 @use 'sass:string';
 @use 'sass:color';
 
-@import 'utils';
+@import "utils";
 
 @function components($color) {
-  @return strip-unit(color.hue($color)), color.saturation($color), color.lightness($color);
+  @return strip-unit(color.hue($color)), color.saturation($color),
+    color.lightness($color);
 }
 
 @function var($name, $alpha: 1) {
-  @return string.unquote('hsla(var(#{$name}), #{$alpha})');
+  @return hsla(string.unquote("var(#{$name})"), #{$alpha});
 }
