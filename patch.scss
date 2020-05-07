@@ -6,14 +6,14 @@ $-hsla: meta.get-function(hsla);
 @function hsla($value, $alpha: 1) {
   @if type-of($value) == color {
     @return meta.call(
-      $hsla,
+      $-hsla,
       color.hue($value),
       color.saturation($value),
       color.lightness($value),
       $alpha
     );
   }
-  @return meta.call($hsla, $value, $alpha);
+  @return meta.call($-hsla, $value, $alpha);
 }
 
 $-hsl: meta.get-function(hsla);
@@ -21,11 +21,11 @@ $-hsl: meta.get-function(hsla);
   @debug type-of($value);
   @if type-of($value) == color {
     @return meta.call(
-      $hsl,
+      $-hsl,
       color.hue($value),
       color.saturation($value),
       color.lightness($value)
     );
   }
-  @return meta.call($hsl, $value);
+  @return meta.call($-hsl, $value);
 }
