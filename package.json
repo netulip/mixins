@@ -1,6 +1,6 @@
 {
   "name": "@netulip/mixins",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection for Sass mixins.",
   "main": "index.scss",
   "scripts": {},
