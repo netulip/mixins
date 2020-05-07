@@ -10,8 +10,3 @@
 @function var($name, $alpha: 1) {
   @return string.unquote('hsla(var(#{$name}), #{$alpha})');
 }
-
-body {
-  --color-background: #{components(green)};
-  background: var(--color-background);
-}
