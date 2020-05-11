@@ -17,7 +17,6 @@
   @return ceil($font-size / $base) * ($base / $font-size);
 }
 
-
 @mixin scale($unit: 1rem, $ratio: 1.2) {
   --text-xs: calc((#{$unit} / #{$ratio}) / #{$ratio});
   --text-sm: calc(var(--text-xs) * #{$ratio});
@@ -30,7 +29,21 @@
   font-size: $unit;
 }
 
-@mixin use($size) {
-  font-size: var(--font-size-#{$size});
-  line-height: var(--line-height-#{$size});
+
+@mixin step($step, $font-size, $grid-size: null) {
+  --font-size-#{$step}: #{$font-size};
+  @if $grid-size {
+    --line-height-#{$step}: #{type.line-height($font-size, $grid-size)};
+  }
+}
+
+@mixin use($step, $line-height: true) {
+  font-size: var(--font-size-#{$step});
+  @if line-height and line-height != false {
+    line-height: if(
+      type-of($line-height) == bool,
+      var(--line-height-#{$step}),
+      $line-height
+    );
+  }
 }
