@@ -1,0 +1,34 @@
+@use 'sass:string';
+@use 'sass:math';
+@use 'sass:meta';
+
+@mixin scale($unit: 1rem) {
+  --space-unit: #{$unit};
+  --space-xxxxs: calc(0.125 * var(--space-unit));
+  --space-xxxs: calc(0.25 * var(--space-unit));
+  --space-xxs: calc(0.375 * var(--space-unit));
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-s: calc(0.75 * var(--space-unit));
+  --space-m: calc(1.25 * var(--space-unit));
+  --space-l: calc(2 * var(--space-unit));
+  --space-xl: calc(3.25 * var(--space-unit));
+  --space-xxl: calc(5.25 * var(--space-unit));
+  --space-xxxl: calc(8.5 * var(--space-unit));
+  --space-xxxxl: calc(13.75 * var(--space-unit));
+}
+
+@function vr($value: 1, $base: --baseline) {
+  @if not math.is-unitless($value) {
+    @error 'vr: Value must be `unitless`.';
+  }
+  @if (meta.type-of($base) == 'string') {
+    @if (string.index($base, '--') == 1) {
+      $base: string.unquote(var(#{$base}));
+    }
+    @if ($value == 1) {
+      @return #{$base};
+    }
+    @return calc(#{$base} * #{$value});
+  }
+  @return $value * $base;
+}

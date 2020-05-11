@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@function line-height($font-size: 1rem, $base: 1.5) {
+  @return ceil($font-size / $base) * ($base / $font-size);
+}
+
+
 @mixin scale($unit: 1rem, $ratio: 1.2) {
   --text-xs: calc((#{$unit} / #{$ratio}) / #{$ratio});
   --text-sm: calc(var(--text-xs) * #{$ratio});
@@ -23,4 +28,9 @@
   --text-xxxl: calc(var(--text-xxl) * #{$ratio});
   --text-xxxxl: calc(var(--text-xxxl) * #{$ratio});
   font-size: $unit;
+}
+
+@mixin use($size) {
+  font-size: var(--font-size-#{$size});
+  line-height: var(--line-height-#{$size});
 }
