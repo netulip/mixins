@@ -33,7 +33,7 @@
 @mixin step($step, $font-size, $grid-size: null) {
   --font-size-#{$step}: #{$font-size};
   @if $grid-size {
-    --line-height-#{$step}: #{type.line-height($font-size, $grid-size)};
+    --line-height-#{$step}: #{line-height($font-size, $grid-size)};
   }
 }
 
