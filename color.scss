@@ -1,13 +1,34 @@
 @use 'sass:string';
 @use 'sass:color';
+@use 'sass:list';
+@use 'sass:meta';
 
-@import "utils";
+@function parts($value, $alpha: null) {
+  @if meta.type-of($value) == "color" {
+    $value: color.hue($value)
+      color.saturation($value)
+      color.lightness($value)
+  }
 
-@function components($color) {
-  @return strip-unit(color.hue($color)), color.saturation($color),
-    color.lightness($color);
+  @if list.length($value) != 3 {
+    @error 'Expects a list of exactly 3 values.';
+  }
+
+  @if $alpha {
+    $value: list.append($value, $alpha);
+  }
+
+  @return $value;
 }
 
-@function var($name, $alpha: 1) {
-  @return hsla(string.unquote("var(#{$name})"), #{$alpha});
-}
+// body {
+//   $hsl: parts(rgb(2, 2, 4));
+//   color: hsla(parts($hsl, 0.5)...);
+//   color: hsla(parts($hsl)...);
+//   color: hsl(parts($hsl, 0.5)...);
+//   color: hsl(parts($hsl)...);
+
+//   --var: #{$hsl};
+//   color: hsla(var(--var), .9);
+//   color: hsl(var(--var));
+// }
