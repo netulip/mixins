@@ -20,3 +20,32 @@
 
   @return $output * $sign;
 }
+
+
+
+// $min[-----------($norm)-------------]$max
+// (1 -  $norm) * $min + $max * $norm;
+@function lerp($norm, $min, $max) {
+  @return ($max - $min) * $norm + $min;
+}
+
+// body {
+//   --screen-min: 20;
+//   --screen-max: 50;
+
+//   --screen-lock: calc(100vw - var(--screen-min) * 1rem);
+//   --screen-range: calc(var(--screen-max) - var(--screen-min));
+//   --screen-size: calc(var(--screen-lock) / var(--screen-range));
+
+//   --font-min: 1;
+//   --font-max: 2;
+//   font-size: calc(
+//     var(--font-min) * 1rem +
+//       ((var(--font-max) - var(--font-min)) * var(--screen-size))
+//   ) !important;
+
+//   @media screen and (min-width: 50rem) {
+//     --screen-size: 1rem;
+//     color: red;
+//   }
+// }
